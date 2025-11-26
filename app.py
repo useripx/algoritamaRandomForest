@@ -9,8 +9,8 @@ st.title('Prediksi Pembelian Lisensi Windows Toko Lisensi Official Kediri')
 st.subheader('Menggunakan Algoritma Random Forest')
 st.subheader('Kelompok 1')
 st.subheader('Yogi Ario Pratama | 2313020004')
-st.subheader('Shandy P | 000000000')
-st.subheader('Fardani | 000000000')
+st.subheader('Shandy P | 2313020069')
+st.subheader('Achmad Fardani | 232302008')
 
 # baca model
 MODEL_FILE = 'beli_windows.pkl' 
@@ -78,4 +78,5 @@ if submitted:
     model_name = model_pipeline.steps[1][0] 
 
     st.info(f"Prediksi dilakukan menggunakan model terbaik ({model_name}).")
+
 
