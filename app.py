@@ -4,9 +4,9 @@ import pandas as pd
 import numpy as np
 
 # Judul
-st.set_page_config(page_title="Prediksi Pembelian Windows (di Toko A)", layout="centered")
+st.set_page_config(page_title="Prediksi Pembelian Windows (di Toko Lisensi Official Kediri)", layout="centered")
 st.title('Prediksi Pembelian Lisensi Windows')
-st.subheader('Menggunakan Algoritma Random Forest') # BARIS INI TELAH DIUBAH
+st.subheader('Menggunakan Algoritma Random Forest')
 st.subheader('Kelompok 1')
 st.subheader('Yogi Ario Pratama | 2313020004')
 st.subheader('Shandy P | 000000000')
@@ -33,7 +33,6 @@ except Exception as e:
 # proses prediksi
 def make_prediction(input_df):
     """Melakukan prediksi menggunakan pipeline yang sudah dimuat."""
-    # Menghilangkan predict_proba karena tidak ada di snippet asli, hanya ada predict
     prediction = model_pipeline.predict(input_df) 
     return prediction[0]
 
@@ -77,4 +76,5 @@ if submitted:
     # hasil
     # model_name akan menampilkan 'classifier' karena itu nama langkah di pipeline
     model_name = model_pipeline.steps[1][0] 
+
     st.info(f"Prediksi dilakukan menggunakan model terbaik ({model_name}).")
