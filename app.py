@@ -19,7 +19,6 @@ def load_model():
 
 pipeline_loaded = load_model()
 
-# 3. Judul dan Deskripsi
 st.title("Prediksi Pembelian Lisensi Windows")
 st.subheader("Model Klasifikasi yang Digunakan: Random Forest")
 st.subheader("Kelompok 1:")
@@ -27,37 +26,26 @@ st.markdown("Yogi Ario Pratama | 2313020004")
 st.markdown("Shandy P | 2313020069")
 st.markdown("Achmad Fardani | 232302008")
 
-# --- Bagian Input Pengguna ---
 st.markdown("---")
-st.markdown("### Masukkan Data Pelanggan Baru (Input Manual)")
+st.markdown("### Masukkan Data Pelanggan")
 
-# Daftar kategori pekerjaan
 PEKERJAAN_OPTIONS = ['Akuntan', 'Dokter', 'Guru', 'Karyawan Swasta', 'Pengusaha', 'Lainnya', 'Hotel Staff', 'Engineer', 'Designer', 'Content Creator'] 
-# Pastikan list ini mencakup SEMUA kategori unik di data.csv
-
 col1, col2 = st.columns(2)
 
 with col1:
-    # INPUT MANUAL: Usia (number_input)
     usia = st.number_input("1. Usia", min_value=18, max_value=100, value=30, step=1, help="Masukkan usia pelanggan (angka bulat)")
     
-    # INPUT MANUAL: Penghasilan Bulanan (number_input)
     penghasilan = st.number_input("2. Penghasilan Bulanan (Juta)", min_value=1.0, max_value=100.0, value=15.0, step=0.1, help="Contoh: 15.0")
     
 with col2:
-    # INPUT KATEGORI: Pekerjaan
     pekerjaan = st.selectbox("3. Pekerjaan", PEKERJAAN_OPTIONS, help="Pilih jenis pekerjaan pelanggan")
     
-    # INPUT MANUAL: Kemampuan Teknologi (number_input)
     kemampuan_teknologi = st.number_input("4. Kemampuan Teknologi (0.0 - 1.0)", min_value=0.0, max_value=1.0, value=0.50, step=0.01, help="Nilai antara 0.0 (rendah) dan 1.0 (tinggi)")
 
-# INPUT MANUAL: Kebutuhan Bisnis (number_input)
 kebutuhan_bisnis = st.number_input("5. Kebutuhan Bisnis (0.0 - 1.0)", min_value=0.0, max_value=1.0, value=0.50, step=0.01, help="Nilai antara 0.0 (rendah) dan 1.0 (tinggi)")
 
 
-# 4. Tombol Prediksi
 if st.button("PREDIKSI HASIL", type="primary"):
-    # Buat DataFrame dari input pengguna
     data_input = pd.DataFrame({
         'Usia': [usia],
         'Pekerjaan': [pekerjaan],
@@ -66,7 +54,6 @@ if st.button("PREDIKSI HASIL", type="primary"):
         'Kebutuhan_Bisnis': [kebutuhan_bisnis]
     })
     
-    # Lakukan prediksi menggunakan pipeline RF
     hasil_prediksi = pipeline_loaded.predict(data_input)[0]
     
     st.markdown("---")
@@ -77,4 +64,5 @@ if st.button("PREDIKSI HASIL", type="primary"):
     else:
         st.warning(f"**PELANGGAN DIPREDIKSI TIDAK AKAN BELI LISENSI WINDOWS.**")
         
+
     st.info("Prediksi didasarkan pada model Random Forest yang telah dilatih.")
