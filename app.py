@@ -68,15 +68,16 @@ if submitted:
     st.divider()
     
     if result == 1:
-        st.success('HASIL PREDIKSI: PELANGGAN DIPREDIKSI **AKAN MEMBELI** WINDOWS!')
+        st.success('HASIL PREDIKSI: PELANGGAN DIPREDIKSI **AKAN MEMBELI** LISENSI WINDOWS!')
         st.balloons()
     else:
-        st.error('HASIL PREDIKSI: PELANGGAN DIPREDIKSI **TIDAK AKAN MEMBELI** WINDOWS.')
+        st.error('HASIL PREDIKSI: PELANGGAN DIPREDIKSI **TIDAK AKAN MEMBELI** LISENSI WINDOWS.')
         
     # hasil
     # model_name akan menampilkan 'classifier' karena itu nama langkah di pipeline
     model_name = model_pipeline.steps[1][0] 
 
     st.info(f"Prediksi dilakukan menggunakan model terbaik ({model_name}).")
+
 
 
